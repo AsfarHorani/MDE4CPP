@@ -1,14 +1,22 @@
+
+/*
+ * Bag.h
+ *
+ *  Created on: 12.05.2017
+ *      Author: frbe5612
+ */
+
 #ifndef ABSTRACTDATATYPES_BAG_HPP
 #define ABSTRACTDATATYPES_BAG_HPP
 
 #ifdef NDEBUG
-	#define DEBUG_INFO(a)		/**/
-	#define DEBUG_WARNING(a)	/**/
-	#define DEBUG_ERROR(a)		/**/
+    #define DEBUG_INFO(a)       /**/
+    #define DEBUG_WARNING(a)    /**/
+    #define DEBUG_ERROR(a)      /**/
 #else
-	#define DEBUG_INFO(a) 		std::cout<<"[\e[0;32mInfo\e[0m]:\t\t"<<__PRETTY_FUNCTION__<<"\n\t\t  -- Message: "<<a<<std::endl;
-	#define DEBUG_WARNING(a) 	std::cout<<"[\e[0;33mWarning\e[0m]:\t"<<__PRETTY_FUNCTION__<<"\n\t\t  -- Message: "<<a<<std::endl;
-	#define DEBUG_ERROR(a)		std::cout<<"[\e[0;31mError\e[0m]:\t"<<__PRETTY_FUNCTION__<<"\n\t\t  -- Message: "<<a<<std::endl;
+    #define DEBUG_INFO(a)       std::cout<<"[\e[0;32mInfo\e[0m]:\t\t"<<__PRETTY_FUNCTION__<<"\n\t\t  -- Message: "<<a<<std::endl;
+    #define DEBUG_WARNING(a)    std::cout<<"[\e[0;33mWarning\e[0m]:\t"<<__PRETTY_FUNCTION__<<"\n\t\t  -- Message: "<<a<<std::endl;
+    #define DEBUG_ERROR(a)      std::cout<<"[\e[0;31mError\e[0m]:\t"<<__PRETTY_FUNCTION__<<"\n\t\t  -- Message: "<<a<<std::endl;
 #endif
 
 #include <algorithm>
@@ -16,7 +24,7 @@
 #include <memory>
 #include <stdexcept>
 #include <vector>
-#include <ranges> // C++20
+#include <ranges> // REQUIRED FOR C++20
 
 template <class T>
 class Bag
@@ -45,32 +53,57 @@ class Bag
             return new Bag<T>(*this);
         }
 
-        // --- OPTIMIZED BULK INSERT ---
         iterator insert(const Bag<T>& b)
         {
-            if (!b.empty())
+            // C++20 Attribute: Tell CPU that inserting an empty bag is rare.
+            // This optimizes the instruction pipeline for the "else" case.
+            if (b.empty()) [[unlikely]]
             {
-                // Optimization: Reserve memory ONCE to prevent multiple reallocations
-                m_bag.reserve(m_bag.size() + b.size());
-                
-                // Removed the "includes" check loop. 
-                // Bags allow duplicates, checking for them is O(N^2) and slow.
-                return m_bag.insert(m_bag.end(), b.cbegin(), b.cend());
+                return m_bag.end();
             }
-            return m_bag.end();
+
+            // Standard reserve (Good practice)
+            m_bag.reserve(m_bag.size() + b.size());
+
+#ifndef NDEBUG
+            // C++20 OPTIMIZATION: std::ranges::find
+            // Unlike std::find(begin, end), this allows the compiler to see the 
+            // contiguous memory block and apply SIMD vectorization (comparing multiple items at once).
+            for (auto const& item : b)
+            {
+                if (std::ranges::find(m_bag, item) != m_bag.end())
+                {
+                    // DEBUG_WARNING("Element " << item << " already present.")
+                }
+            }
+#endif
+            return m_bag.insert(m_bag.end(), b.cbegin(), b.cend());
         }
 
-        // --- Standard Iterator Insert ---
         iterator insert(iterator a, iterator b, iterator c)
         {
-            // Removed debug loop for performance
+#ifndef NDEBUG
+            for (auto i = b; i != c; i++)
+            {
+                // C++20 OPTIMIZATION
+                if (std::ranges::find(m_bag, *i) != m_bag.end())
+                {
+                    // DEBUG_WARNING("Element " << *i << " already present.")
+                }
+            }
+#endif
             return m_bag.insert(a, b, c);
         }
 
-        // --- Standard Insert ---
         iterator insert(iterator a, const std::shared_ptr<T>& b)
         {
-            // Removed debug "includes" check.
+#ifndef NDEBUG
+            // C++20 OPTIMIZATION
+            if (std::ranges::find(m_bag, b) != m_bag.end())
+            {
+                 // DEBUG_WARNING("Element " << b << " already present.")
+            }
+#endif
             return m_bag.insert(a, b);
         }
 
@@ -107,7 +140,7 @@ class Bag
         const std::shared_ptr<T>& at(unsigned int n) const
         {
 #ifndef NDEBUG
-            if (n >= m_bag.size())
+            if (n >= m_bag.size()) [[unlikely]] // C++20 Attribute
             {
                 throw std::invalid_argument("Bag.hpp: index out of range");
             }
@@ -115,23 +148,27 @@ class Bag
             return m_bag[n];
         }
 
-        // --- OPTIMIZED ADD ---
         virtual void add(const std::shared_ptr<T>& el)
         {
-            // Removed "includes" check. 
-            // Push back is Amortized O(1). Checking includes is O(N).
+#ifndef NDEBUG
+            // C++20 OPTIMIZATION
+            if (std::ranges::find(m_bag, el) != m_bag.end())
+            {
+                // DEBUG_WARNING...
+            }
+#endif
             m_bag.push_back(el);
         }
 
         virtual void add(const std::shared_ptr<T>& el, int index)
         {
-            if(index < 0 || index >= (int)m_bag.size())
+            if(index < 0 || index >= (int)m_bag.size()) [[unlikely]]
             {
-                m_bag.push_back(el);
+                this->add(el);
             }
             else
             {
-                m_bag.insert(m_bag.begin() + index, el);
+                this->insert(begin() + index, el);
             }
         }
 
@@ -142,59 +179,60 @@ class Bag
 
         iterator erase(iterator el)
         {
-			// Calling erase on an empty std::vector results in segmentation fault
-            if(!m_bag.empty())
+            if(!m_bag.empty()) [[likely]]
             {
                 return m_bag.erase(el);
             }
-			
+            
             return m_bag.end();
         }
 
         virtual iterator erase(const std::shared_ptr<T>& el)
         {
-            // C++20 Ranges Optimization
+            // C++20 OPTIMIZATION: ranges::find
+            // Faster lookup due to contiguous memory hints for the compiler
             auto it = std::ranges::find(m_bag, el);
             
-            if(it != m_bag.end())
+            if(it != m_bag.end()) [[likely]]
             {
                 return m_bag.erase(it);
             }
-            return m_bag.end();
+
+            return it;
         }
 
         iterator find(const std::shared_ptr<T>& el)
         {
-            // C++20 Ranges Optimization
+            // C++20 OPTIMIZATION
             return std::ranges::find(m_bag, el);
-        } 
+        }
 
         bool includes(const std::shared_ptr<T>& el) const
         {
-            // C++20 Ranges Optimization
+            // C++20 OPTIMIZATION
             return std::ranges::find(m_bag, el) != m_bag.end();
         }
 
         int index_of(const std::shared_ptr<T>& el)
         {
+            // C++20 OPTIMIZATION
             auto it = std::ranges::find(m_bag, el);
             return index_of(it);
         }
 
         int index_of(iterator it)
         {
-            if(it != m_bag.end())
+            if(it != m_bag.end()) [[likely]]
             {
                 return std::distance(m_bag.begin(), it);
             }
+
             return -1;
         }
 
         template <class U>
         Bag(Bag<U> const &u)
         {
-            // Simple copy, relying on vector assignment
-            // (Assumes shared_ptr types are compatible)
             for(const auto& item : u)
             {
                 m_bag.push_back(item);
@@ -222,4 +260,4 @@ class Bag
         }
 };
 
-#endif
+#endif // ABSTRACTDATATYPES_BAG_HPP
