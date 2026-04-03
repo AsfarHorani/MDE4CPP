@@ -21,6 +21,7 @@
 
 #include <algorithm>
 #include <iostream>
+#include <iterator>
 #include <memory>
 #include <stdexcept>
 #include <vector>
@@ -83,12 +84,12 @@ class Bag
         iterator insert(iterator a, iterator b, iterator c)
         {
 #ifndef NDEBUG
-            for (auto i = b; i != c; i++)
+            // C++20: use a ranges view over [b,c) instead of manual iterator loops.
+            for (const auto& el : std::ranges::subrange(b, c))
             {
-                // C++20 OPTIMIZATION
-                if (std::ranges::find(m_bag, *i) != m_bag.end())
+                if (std::ranges::find(m_bag, el) != m_bag.end())
                 {
-                    // DEBUG_WARNING("Element " << *i << " already present.")
+                    // DEBUG_WARNING("Element " << el << " already present.")
                 }
             }
 #endif
@@ -116,6 +117,35 @@ class Bag
         {
             return m_bag.front();
         }
+        // NEW EXPERIMENTAL FUNCTIONS
+
+        // O(1) Time - Extremely Fast
+        virtual void pop_back()
+        {
+            if (m_bag.empty()) [[unlikely]]
+            {
+                return;
+            }
+
+            // Ensure we drop our strong reference before removing the slot.
+            // This makes the ref-count transition explicit (useful for experiments).
+            m_bag.back().reset();
+            m_bag.pop_back();
+        }
+
+        // O(N) Time - Slow (Causes memory shifting)
+        virtual void pop_front()
+        {
+            if (m_bag.empty()) [[unlikely]]
+            {
+                return;
+            }
+
+            // Drop strong reference, then erase (note: erase(begin) shifts elements).
+            m_bag.front().reset();
+            m_bag.erase(m_bag.begin());
+        }
+        
 
         void clear()
         {
@@ -233,10 +263,8 @@ class Bag
         template <class U>
         Bag(Bag<U> const &u)
         {
-            for(const auto& item : u)
-            {
-                m_bag.push_back(item);
-            }
+            // C++20: use ranges algorithm for clarity and potential optimizer friendliness.
+            std::ranges::copy(u, std::back_inserter(m_bag));
         }
 
         virtual const_iterator cbegin() const
@@ -258,6 +286,9 @@ class Bag
         {
             return m_bag.end();
         }
+		//TODO 
+		//erase method with std::vector of elements
+		//find more use ful 
 };
 
 #endif // ABSTRACTDATATYPES_BAG_HPP

@@ -12,9 +12,9 @@
 #include "ecore/EReference.hpp"
 #include "ecore/EStringToStringMapEntry.hpp"
 #include "ecore/EStructuralFeature.hpp"
+#include "abstractDataTypes/Subset.hpp"
 
-
-#define NUM_ELEMENT 50000
+#define NUM_ELEMENT 1000000
 
 using namespace ecore;
 
@@ -24,10 +24,11 @@ int main()
 
     {
 		start = std::chrono::high_resolution_clock::now();
-		std::shared_ptr<ecorePackage> package=ecorePackage::eInstance();
+		//std::shared_ptr<ecorePackage> package=ecorePackage::eInstance();
 		std::shared_ptr<ecoreFactory> factory = ecoreFactory::eInstance();
 		end = std::chrono::high_resolution_clock::now();
-
+		{
+		std::shared_ptr<EPackage> package = factory->createEPackage();
 		std::cout << "setup time: " << std::chrono::duration_cast<std::chrono::microseconds>(end-start).count() << std::endl;
 
 		// Benchmark section
@@ -45,14 +46,16 @@ int main()
 
 			end = std::chrono::high_resolution_clock::now();
 			std::cout << "time to create " << NUM_ELEMENT << " classes: " <<  std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count() << std::endl;
+			std::shared_ptr<EAnnotation> a = factory->createEAnnotation_as_eAnnotations_in_EModelElement(package);
+
+
 		}
 
 		// Delete Elements
 		start = std::chrono::high_resolution_clock::now();
-		std::shared_ptr< Bag<ecore::EClassifier> > classifiers = package->getEClassifiers();
+		std::shared_ptr<Bag<ecore::EClassifier> > classifiers = package->getEClassifiers();
 		std::shared_ptr<Subset<ecore::EClassifier, ecore::EObject>> subsetClassifiers;
 		subsetClassifiers = std::dynamic_pointer_cast<Subset<ecore::EClassifier, ecore::EObject>>(classifiers);
-		std::cout << "deleting: " << classifiers->size() << " custom elements with erase" << std::endl;
 		//for loop for every elements for delete in classifiers
 		if(subsetClassifiers != nullptr)
 		{
@@ -63,11 +66,22 @@ int main()
 			}
 			
 		}
+
+
 		end = std::chrono::high_resolution_clock::now();
 		std::cout << "time to delete " << NUM_ELEMENT << " classes: " <<  std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count() << std::endl;
+		std::shared_ptr< Bag<ecore::EObject> > contentUnions = package->getEContentUnion();
+		std::cout<<classifiers->size()<<std::endl;
+		std::cout<<contentUnions->size()<<std::endl;
+		auto start2 = std::chrono::high_resolution_clock::now();
+		contentUnions->clear();
+		auto end2 = std::chrono::high_resolution_clock::now();
+		std::cout << "time to delete UnionContent " << NUM_ELEMENT << " classes: " <<  std::chrono::duration_cast<std::chrono::milliseconds>(end2-start2).count() << std::endl;
+
 
 		// Delete All
 		start = std::chrono::high_resolution_clock::now();
+	}
     }
 	end = std::chrono::high_resolution_clock::now();
 

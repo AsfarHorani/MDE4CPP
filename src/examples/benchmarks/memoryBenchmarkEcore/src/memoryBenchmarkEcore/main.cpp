@@ -23,6 +23,19 @@
 
 using namespace ecore;
 
+void pauseProgram() {
+#ifdef _WIN32
+    // If the OS is Windows, the compiler uses this:
+    system("PAUSE");
+#else
+    // If the OS is Linux/Mac, the compiler uses this:
+    std::cout << "Press Enter to continue..." << std::endl;
+    // Clear any leftover newline characters in the input buffer
+    if (std::cin.rdbuf()->in_avail() > 0) std::cin.ignore(256, '\n');
+    std::cin.get();
+#endif
+}
+
 int main()
 {
     std::chrono::time_point<std::chrono::high_resolution_clock> start, end;
@@ -34,7 +47,7 @@ int main()
     for (int var2 = 0; var2 < 5; ++var2)
     {
         std::cout<< "----------------------------   start next iteration  ---------------------------------------\n";
-    	system("PAUSE");
+    	pauseProgram();
         start = std::chrono::high_resolution_clock::now();
         {
         	std::shared_ptr<EPackage> p = factory->createEPackage();
@@ -63,12 +76,36 @@ int main()
 
 			end = std::chrono::high_resolution_clock::now();
 			std::cout << "Time to create objects:" << std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count() << std::endl;
-	    	system("PAUSE");
-			std::cout<< "----------- delete objects\n" << std::endl;
-	        start = std::chrono::high_resolution_clock::now();
-        }
-    	end = std::chrono::high_resolution_clock::now();
-        std::cout << "Time to delete objects: " << std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count() << std::endl;
+pauseProgram();
+            std::cout<< "----------- delete objects\n" << std::endl;
+            start = std::chrono::high_resolution_clock::now();
+
+            // --- SURGICAL FIX: FORCE DELETION ---
+            // 1. Take a snapshot of the classifiers to avoid iterator invalidation
+            auto classifiers = p->getEClassifiers();
+            if (classifiers != nullptr) {
+                std::vector<std::shared_ptr<ecore::EClassifier>> copyList;
+                for(size_t i = 0; i < classifiers->size(); ++i) {
+                    copyList.push_back(classifiers->at(i));
+                }
+
+                // 2. Command the package to erase them.
+                // This manually triggers the Subset/Union update AND breaks the ring dependency!
+				//size before
+				std::cout << "Size before deletion: " << p->getEClassifiers()->size() << std::endl;
+				for (const auto& element : copyList) {
+                    p->getEClassifiers()->erase(element);
+                }
+            }
+
+			std::cout << "Size after deletion: " << p->getEClassifiers()->size() << std::endl;
+            // ------------------------------------
+
+        } // <--- Now when it hits this bracket, the RAM will actually free!
+        
+        end = std::chrono::high_resolution_clock::now();
+
+		std::cout << "Time to delete objects: " << std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count() << std::endl;
     }
     std::cout<< "------------------------------- Finished  ------------------------------------\n";
 

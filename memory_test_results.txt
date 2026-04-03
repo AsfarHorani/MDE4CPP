@@ -1,0 +1,838 @@
+--------------------------------------------------------------------------------
+Command:            ./memoryBenchmarkEcore
+Massif arguments:   --time-unit=B --massif-out-file=memory_test_release.out
+ms_print arguments: memory_test_release.out
+--------------------------------------------------------------------------------
+
+
+    MB
+166.0^       #                                                                
+     |       #             :              :             @@            :       
+     |       #             :              :             @             ::      
+     |      @#:            :::            :            :@             ::      
+     |      @#:           :::            ::            :@            ::::     
+     |      @#:           :::            :::           :@ :          ::::     
+     |      @#::          :::            :::           :@ :         :::::@    
+     |    ::@#::         :::: :        :::::          ::@ :         :::::@    
+     |    : @#::         :::: :        : :::::        ::@ :         :::::@    
+     |    : @#::::       :::: :       :: ::::        :::@ :         :::::@    
+     |    @ @#:::        :::: :       :: ::::        :::@ ::       ::::::@:   
+     |    @ @#:::      @@:::: ::      :: :::: :      :::@ ::       ::::::@:   
+     |    @ @#:::      @ :::: ::      @: :::: :     ::::@ ::@     :::::::@::  
+     |  @@@ @#:::      @ :::: :::     @: :::: :     ::::@ ::@     :::::::@::  
+     |  @ @ @#::: :    @ :::: :::     @: :::: ::   :::::@ ::@     @::::::@::  
+     |  @ @ @#::: :   :@ :::: :::   ::@: :::: :    :::::@ ::@     @::::::@::  
+     | @@ @ @#::: :   :@ :::: :::   : @: :::: :    :::::@ ::@::  :@::::::@::: 
+     | @@ @ @#::: ::  :@ :::: ::::  : @: :::: :   ::::::@ ::@:   :@::::::@::: 
+     | @@ @ @#::: :: ::@ :::: ::::  : @: :::: : : ::::::@ ::@:  ::@::::::@::::
+     | @@ @ @#::: :: ::@ :::: ::::  : @: :::: : : ::::::@ ::@:  ::@::::::@::::
+   0 +----------------------------------------------------------------------->GB
+     0                                                                   1.693
+
+Number of snapshots: 71
+ Detailed snapshots: [1, 2, 3, 5, 6 (peak), 15, 27, 44, 47, 53, 63]
+
+--------------------------------------------------------------------------------
+  n        time(B)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  0              0                0                0             0            0
+  1     37,996,200       35,190,056       31,115,513     4,074,543            0
+88.42% (31,115,513B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->17.25% (6,071,488B) 0x497B6DC: ecore::ecoreFactoryImpl::createEClass_as_eClassifiers_in_EPackage(std::weak_ptr<ecore::EPackage>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->17.25% (6,070,880B) 0x10A5D3: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| | 
+| ->00.00% (608B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->13.39% (4,712,920B) 0x497F274: ecore::ecoreFactoryImpl::createEReference_as_eReferences_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->13.39% (4,712,920B) 0x10A6C8: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->12.48% (4,393,400B) 0x497AB94: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->12.48% (4,393,400B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->10.89% (3,833,856B) 0x498173C: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->10.89% (3,833,856B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->10.50% (3,694,441B) in 30 places, all below massif's threshold (1.00%)
+| 
+->09.08% (3,194,880B) 0x497E9DC: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->09.08% (3,194,880B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->03.01% (1,060,880B) 0x49C960E: Bag<ecore::EObject>::add(std::shared_ptr<ecore::EObject> const&) (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.82% (638,976B) 0x49818EF: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.82% (638,976B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |   
+| ->01.20% (421,904B) in 4 places, all below massif's threshold (1.00%)
+|   
+->02.27% (798,800B) 0x4A33B14: ecore::EObjectImpl::getEContentUnion() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.13% (399,400B) 0x49DBF8A: ecore::EClassImpl::getEStructuralFeatures() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.13% (399,400B) 0x49DBD8F: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |   ->01.13% (399,400B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |     ->01.13% (399,400B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |       
+| ->01.13% (399,360B) 0x4A46A12: ecore::EOperationImpl::getEParameters() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.13% (399,360B) 0x497EA93: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |   ->01.13% (399,360B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |     
+| ->00.00% (40B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->01.82% (639,040B) 0x49DBECC: ecore::EClassImpl::getEStructuralFeatures() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.82% (639,040B) 0x49DBD8F: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.82% (639,040B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|     ->01.82% (639,040B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|       
+->01.59% (559,160B) 0x49DBB14: ecore::EClassImpl::getEReferences() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.59% (559,160B) 0x497F2CE: ecore::ecoreFactoryImpl::createEReference_as_eReferences_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.59% (559,160B) 0x10A6C8: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.59% (559,160B) 0x49DBCE4: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.59% (559,160B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.59% (559,160B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.59% (559,104B) 0x49DC094: ecore::EClassImpl::getEOperations() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.59% (559,104B) 0x498181B: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.59% (559,104B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.59% (559,104B) 0x4A4696C: ecore::EOperationImpl::getEParameters() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.59% (559,104B) 0x497EA93: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.59% (559,104B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.36% (479,280B) 0x4A33B56: ecore::EObjectImpl::getEContentUnion() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+  ->01.36% (479,280B) in 3 places, all below massif's threshold (1.00%)
+    
+--------------------------------------------------------------------------------
+  n        time(B)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  2     74,087,280       68,563,520       60,619,849     7,943,671            0
+88.41% (60,619,849B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->17.26% (11,837,152B) 0x497B6DC: ecore::ecoreFactoryImpl::createEClass_as_eClassifiers_in_EPackage(std::weak_ptr<ecore::EPackage>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->17.26% (11,836,544B) 0x10A5D3: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| | 
+| ->00.00% (608B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->13.40% (9,188,896B) 0x497F274: ecore::ecoreFactoryImpl::createEReference_as_eReferences_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->13.40% (9,188,896B) 0x10A6C8: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->12.49% (8,565,920B) 0x497AB94: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->12.49% (8,565,920B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->10.90% (7,475,328B) 0x498173C: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->10.90% (7,475,328B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->10.42% (7,142,873B) in 30 places, all below massif's threshold (1.00%)
+| 
+->09.09% (6,229,440B) 0x497E9DC: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->09.09% (6,229,440B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->03.04% (2,081,664B) 0x49C960E: Bag<ecore::EObject>::add(std::shared_ptr<ecore::EObject> const&) (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.82% (1,245,888B) 0x49818EF: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.82% (1,245,888B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |   
+| ->01.22% (835,776B) in 4 places, all below massif's threshold (1.00%)
+|   
+->02.27% (1,557,440B) 0x4A33B14: ecore::EObjectImpl::getEContentUnion() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.14% (778,720B) 0x49DBF8A: ecore::EClassImpl::getEStructuralFeatures() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.14% (778,720B) 0x49DBD8F: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |   ->01.14% (778,720B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |     ->01.14% (778,720B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |       
+| ->01.14% (778,680B) 0x4A46A12: ecore::EOperationImpl::getEParameters() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.14% (778,680B) 0x497EA93: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |   ->01.14% (778,680B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |     
+| ->00.00% (40B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->01.82% (1,245,952B) 0x49DBECC: ecore::EClassImpl::getEStructuralFeatures() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.82% (1,245,952B) 0x49DBD8F: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.82% (1,245,952B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|     ->01.82% (1,245,952B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|       
+->01.59% (1,090,208B) 0x49DBB14: ecore::EClassImpl::getEReferences() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.59% (1,090,208B) 0x497F2CE: ecore::ecoreFactoryImpl::createEReference_as_eReferences_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.59% (1,090,208B) 0x10A6C8: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.59% (1,090,208B) 0x49DBCE4: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.59% (1,090,208B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.59% (1,090,208B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.59% (1,090,152B) 0x49DC094: ecore::EClassImpl::getEOperations() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.59% (1,090,152B) 0x498181B: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.59% (1,090,152B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.59% (1,090,152B) 0x4A4696C: ecore::EOperationImpl::getEParameters() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.59% (1,090,152B) 0x497EA93: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.59% (1,090,152B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.36% (934,464B) 0x4A33B56: ecore::EObjectImpl::getEContentUnion() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+  ->01.36% (934,464B) in 3 places, all below massif's threshold (1.00%)
+    
+--------------------------------------------------------------------------------
+  n        time(B)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  3    101,139,776       94,307,984       83,332,041    10,975,943            0
+88.36% (83,332,041B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->17.34% (16,355,808B) 0x497B6DC: ecore::ecoreFactoryImpl::createEClass_as_eClassifiers_in_EPackage(std::weak_ptr<ecore::EPackage>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->17.34% (16,355,200B) 0x10A5D3: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| | 
+| ->00.00% (608B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->13.46% (12,696,800B) 0x497F274: ecore::ecoreFactoryImpl::createEReference_as_eReferences_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->13.46% (12,696,800B) 0x10A6C8: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->12.55% (11,836,000B) 0x497AB94: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->12.55% (11,836,000B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->10.95% (10,329,216B) 0x498173C: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->10.95% (10,329,216B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->10.22% (9,640,025B) in 30 places, all below massif's threshold (1.00%)
+| 
+->09.13% (8,607,680B) 0x497E9DC: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->09.13% (8,607,680B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->02.84% (2,676,224B) 0x49C960E: Bag<ecore::EObject>::add(std::shared_ptr<ecore::EObject> const&) (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.83% (1,721,536B) 0x49818EF: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.83% (1,721,536B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |   
+| ->01.01% (954,688B) in 4 places, all below massif's threshold (1.00%)
+|   
+->02.28% (2,152,000B) 0x4A33B14: ecore::EObjectImpl::getEContentUnion() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.14% (1,076,000B) 0x49DBF8A: ecore::EClassImpl::getEStructuralFeatures() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.14% (1,076,000B) 0x49DBD8F: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |   ->01.14% (1,076,000B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |     ->01.14% (1,076,000B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |       
+| ->01.14% (1,075,960B) 0x4A46A12: ecore::EOperationImpl::getEParameters() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.14% (1,075,960B) 0x497EA93: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |   ->01.14% (1,075,960B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |     
+| ->00.00% (40B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->01.83% (1,721,600B) 0x49DBECC: ecore::EClassImpl::getEStructuralFeatures() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.83% (1,721,600B) 0x49DBD8F: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.83% (1,721,600B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|     ->01.83% (1,721,600B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|       
+->01.60% (1,506,400B) 0x49DBB14: ecore::EClassImpl::getEReferences() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.60% (1,506,400B) 0x497F2CE: ecore::ecoreFactoryImpl::createEReference_as_eReferences_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.60% (1,506,400B) 0x10A6C8: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.60% (1,506,400B) 0x49DBCE4: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.60% (1,506,400B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.60% (1,506,400B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.60% (1,506,344B) 0x49DC094: ecore::EClassImpl::getEOperations() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.60% (1,506,344B) 0x498181B: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.60% (1,506,344B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.60% (1,506,344B) 0x4A4696C: ecore::EOperationImpl::getEParameters() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.60% (1,506,344B) 0x497EA93: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.60% (1,506,344B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.37% (1,291,200B) 0x4A33B56: ecore::EObjectImpl::getEContentUnion() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+  ->01.37% (1,291,200B) in 3 places, all below massif's threshold (1.00%)
+    
+--------------------------------------------------------------------------------
+  n        time(B)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  4    123,542,680      115,678,296      102,308,801    13,369,495            0
+  5    160,003,840      148,380,736      131,159,377    17,221,359            0
+88.39% (131,159,377B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->17.30% (25,662,464B) 0x497B6DC: ecore::ecoreFactoryImpl::createEClass_as_eClassifiers_in_EPackage(std::weak_ptr<ecore::EPackage>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->17.29% (25,661,856B) 0x10A5D3: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| | 
+| ->00.00% (608B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->13.43% (19,921,704B) 0x497F274: ecore::ecoreFactoryImpl::createEReference_as_eReferences_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->13.43% (19,921,704B) 0x10A6C8: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->12.52% (18,571,080B) 0x497AB94: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->12.52% (18,571,080B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->10.92% (16,207,488B) 0x498173C: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->10.92% (16,207,488B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->10.32% (15,307,513B) in 30 places, all below massif's threshold (1.00%)
+| 
+->09.10% (13,505,920B) 0x497E9DC: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->09.10% (13,505,920B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->02.98% (4,425,152B) 0x49C960E: Bag<ecore::EObject>::add(std::shared_ptr<ecore::EObject> const&) (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.82% (2,701,248B) 0x49818EF: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.82% (2,701,248B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |   
+| ->01.16% (1,723,904B) in 4 places, all below massif's threshold (1.00%)
+|   
+->02.28% (3,376,560B) 0x4A33B14: ecore::EObjectImpl::getEContentUnion() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.14% (1,688,280B) 0x49DBF8A: ecore::EClassImpl::getEStructuralFeatures() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.14% (1,688,280B) 0x49DBD8F: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |   ->01.14% (1,688,280B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |     ->01.14% (1,688,280B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |       
+| ->01.14% (1,688,240B) 0x4A46A12: ecore::EOperationImpl::getEParameters() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.14% (1,688,240B) 0x497EA93: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |   ->01.14% (1,688,240B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |     
+| ->00.00% (40B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->01.82% (2,701,248B) 0x49DBECC: ecore::EClassImpl::getEStructuralFeatures() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.82% (2,701,248B) 0x49DBD8F: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.82% (2,701,248B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|     ->01.82% (2,701,248B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|       
+->01.59% (2,363,592B) 0x49DBB14: ecore::EClassImpl::getEReferences() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.59% (2,363,592B) 0x497F2CE: ecore::ecoreFactoryImpl::createEReference_as_eReferences_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.59% (2,363,592B) 0x10A6C8: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.59% (2,363,592B) 0x49DBCE4: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.59% (2,363,592B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.59% (2,363,592B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.59% (2,363,592B) 0x49DC094: ecore::EClassImpl::getEOperations() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.59% (2,363,592B) 0x498181B: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.59% (2,363,592B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.59% (2,363,536B) 0x4A4696C: ecore::EOperationImpl::getEParameters() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.59% (2,363,536B) 0x497EA93: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.59% (2,363,536B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.37% (2,025,936B) 0x4A33B56: ecore::EObjectImpl::getEContentUnion() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+  ->01.37% (2,025,936B) in 3 places, all below massif's threshold (1.00%)
+    
+--------------------------------------------------------------------------------
+  n        time(B)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  6    186,939,128      174,013,720      153,773,209    20,240,511            0
+88.37% (153,773,209B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->17.33% (30,161,664B) 0x497B6DC: ecore::ecoreFactoryImpl::createEClass_as_eClassifiers_in_EPackage(std::weak_ptr<ecore::EPackage>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->17.33% (30,161,056B) 0x10A5D3: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| | 
+| ->00.00% (608B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->13.46% (23,414,504B) 0x497F274: ecore::ecoreFactoryImpl::createEReference_as_eReferences_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->13.46% (23,414,504B) 0x10A6C8: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->12.54% (21,827,080B) 0x497AB94: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->12.54% (21,827,080B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->10.95% (19,048,704B) 0x498173C: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->10.95% (19,048,704B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->10.23% (17,793,865B) in 30 places, all below massif's threshold (1.00%)
+| 
+->09.12% (15,873,920B) 0x497E9DC: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->09.12% (15,873,920B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->02.88% (5,017,072B) 0x49C960E: Bag<ecore::EObject>::add(std::shared_ptr<ecore::EObject> const&) (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.82% (3,174,784B) 0x49818EF: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.82% (3,174,784B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |   
+| ->01.06% (1,842,288B) in 4 places, all below massif's threshold (1.00%)
+|   
+->02.28% (3,968,560B) 0x4A33B14: ecore::EObjectImpl::getEContentUnion() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.14% (1,984,280B) 0x49DBF8A: ecore::EClassImpl::getEStructuralFeatures() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.14% (1,984,280B) 0x49DBD8F: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |   ->01.14% (1,984,280B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |     ->01.14% (1,984,280B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |       
+| ->01.14% (1,984,240B) 0x4A46A12: ecore::EOperationImpl::getEParameters() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.14% (1,984,240B) 0x497EA93: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |   ->01.14% (1,984,240B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |     
+| ->00.00% (40B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->01.82% (3,174,848B) 0x49DBECC: ecore::EClassImpl::getEStructuralFeatures() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.82% (3,174,848B) 0x49DBD8F: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.82% (3,174,848B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|     ->01.82% (3,174,848B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|       
+->01.60% (2,777,992B) 0x49DBB14: ecore::EClassImpl::getEReferences() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.60% (2,777,992B) 0x497F2CE: ecore::ecoreFactoryImpl::createEReference_as_eReferences_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.60% (2,777,992B) 0x10A6C8: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.60% (2,777,992B) 0x49DBCE4: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.60% (2,777,992B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.60% (2,777,992B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.60% (2,777,936B) 0x49DC094: ecore::EClassImpl::getEOperations() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.60% (2,777,936B) 0x498181B: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.60% (2,777,936B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.60% (2,777,936B) 0x4A4696C: ecore::EOperationImpl::getEParameters() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.60% (2,777,936B) 0x497EA93: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.60% (2,777,936B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.37% (2,381,136B) 0x4A33B56: ecore::EObjectImpl::getEContentUnion() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+  ->01.37% (2,381,136B) in 3 places, all below massif's threshold (1.00%)
+    
+--------------------------------------------------------------------------------
+  n        time(B)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  7    212,589,048      151,165,384      133,615,977    17,549,407            0
+  8    241,182,256      122,572,176      108,390,609    14,181,567            0
+  9    264,723,664       99,030,768       87,622,033    11,408,735            0
+ 10    305,921,080       57,833,352       51,277,025     6,556,327            0
+ 11    329,462,440       34,291,992       30,508,449     3,783,543            0
+ 12    362,628,152        1,126,280        1,125,609           671            0
+ 13    386,201,104       21,025,280       18,588,249     2,437,031            0
+ 14    412,682,384       45,739,856       40,422,721     5,317,135            0
+ 15    448,216,488       78,583,272       69,459,465     9,123,807            0
+88.39% (69,459,465B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->17.30% (13,596,096B) 0x497B6DC: ecore::ecoreFactoryImpl::createEClass_as_eClassifiers_in_EPackage(std::weak_ptr<ecore::EPackage>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->17.30% (13,595,488B) 0x10A5D3: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| | 
+| ->00.00% (608B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->13.43% (10,553,920B) 0x497F274: ecore::ecoreFactoryImpl::createEReference_as_eReferences_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->13.43% (10,553,920B) 0x10A6C8: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->12.52% (9,838,400B) 0x497AB94: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->12.52% (9,838,400B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->10.93% (8,586,240B) 0x498173C: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->10.93% (8,586,240B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->10.33% (8,114,697B) in 30 places, all below massif's threshold (1.00%)
+| 
+->09.11% (7,155,200B) 0x497E9DC: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->09.11% (7,155,200B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->02.94% (2,313,088B) 0x49C960E: Bag<ecore::EObject>::add(std::shared_ptr<ecore::EObject> const&) (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.82% (1,431,040B) 0x49818EF: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.82% (1,431,040B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |   
+| ->01.12% (882,048B) in 4 places, all below massif's threshold (1.00%)
+|   
+->02.28% (1,788,840B) 0x4A33B14: ecore::EObjectImpl::getEContentUnion() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.14% (894,400B) 0x49DBF8A: ecore::EClassImpl::getEStructuralFeatures() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.14% (894,400B) 0x49DBD8F: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |   ->01.14% (894,400B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |     ->01.14% (894,400B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |       
+| ->01.14% (894,400B) 0x4A46A12: ecore::EOperationImpl::getEParameters() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.14% (894,400B) 0x497EA93: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |   ->01.14% (894,400B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |     
+| ->00.00% (40B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->01.82% (1,431,040B) 0x49DBECC: ecore::EClassImpl::getEStructuralFeatures() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.82% (1,431,040B) 0x49DBD8F: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.82% (1,431,040B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|     ->01.82% (1,431,040B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|       
+->01.59% (1,252,160B) 0x49DBB14: ecore::EClassImpl::getEReferences() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.59% (1,252,160B) 0x497F2CE: ecore::ecoreFactoryImpl::createEReference_as_eReferences_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.59% (1,252,160B) 0x10A6C8: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.59% (1,252,160B) 0x49DBCE4: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.59% (1,252,160B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.59% (1,252,160B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.59% (1,252,160B) 0x49DC094: ecore::EClassImpl::getEOperations() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.59% (1,252,160B) 0x498181B: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.59% (1,252,160B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.59% (1,252,160B) 0x4A4696C: ecore::EOperationImpl::getEParameters() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.59% (1,252,160B) 0x497EA93: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.59% (1,252,160B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.37% (1,073,304B) 0x4A33B56: ecore::EObjectImpl::getEContentUnion() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+  ->01.37% (1,073,304B) in 3 places, all below massif's threshold (1.00%)
+    
+--------------------------------------------------------------------------------
+  n        time(B)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 16    488,715,912      116,202,616      102,833,089    13,369,527            0
+ 17    519,546,840      144,519,576      127,753,033    16,766,543            0
+ 18    541,568,856      165,476,792      146,241,833    19,234,959            0
+ 19    576,804,960      150,549,824      133,072,945    17,476,879            0
+ 20    607,636,312      119,718,472      105,873,025    13,845,447            0
+ 21    642,948,512       84,406,272       74,720,065     9,686,207            0
+ 22    660,605,032       66,749,752       59,143,169     7,606,583            0
+ 23    695,917,248       31,437,536       27,990,185     3,447,351            0
+ 24    732,114,376        4,558,152        4,037,609       520,543            0
+ 25    761,541,536       31,711,456       28,046,617     3,664,839            0
+ 26    779,198,352       48,514,496       42,870,553     5,643,943            0
+ 27    808,625,960       75,546,744       66,780,593     8,766,151            0
+88.40% (66,780,593B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->17.29% (13,062,880B) 0x497B6DC: ecore::ecoreFactoryImpl::createEClass_as_eClassifiers_in_EPackage(std::weak_ptr<ecore::EPackage>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->17.29% (13,062,272B) 0x10A5D3: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| | 
+| ->00.00% (608B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->13.42% (10,140,448B) 0x497F274: ecore::ecoreFactoryImpl::createEReference_as_eReferences_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->13.42% (10,140,448B) 0x10A6C8: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->12.51% (9,452,960B) 0x497AB94: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->12.51% (9,452,960B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->10.92% (8,249,472B) 0x498173C: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->10.92% (8,249,472B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->10.35% (7,820,153B) in 30 places, all below massif's threshold (1.00%)
+| 
+->09.10% (6,874,560B) 0x497E9DC: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->09.10% (6,874,560B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->02.97% (2,242,944B) 0x49C960E: Bag<ecore::EObject>::add(std::shared_ptr<ecore::EObject> const&) (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.82% (1,374,912B) 0x49818EF: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.82% (1,374,912B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |   
+| ->01.15% (868,032B) in 4 places, all below massif's threshold (1.00%)
+|   
+->02.28% (1,718,720B) 0x4A33B14: ecore::EObjectImpl::getEContentUnion() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.14% (859,360B) 0x49DBF8A: ecore::EClassImpl::getEStructuralFeatures() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.14% (859,360B) 0x49DBD8F: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |   ->01.14% (859,360B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |     ->01.14% (859,360B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |       
+| ->01.14% (859,320B) 0x4A46A12: ecore::EOperationImpl::getEParameters() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.14% (859,320B) 0x497EA93: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |   ->01.14% (859,320B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |     
+| ->00.00% (40B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->01.82% (1,374,976B) 0x49DBECC: ecore::EClassImpl::getEStructuralFeatures() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.82% (1,374,976B) 0x49DBD8F: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.82% (1,374,976B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|     ->01.82% (1,374,976B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|       
+->01.59% (1,203,104B) 0x49DBCE4: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.59% (1,203,104B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.59% (1,203,104B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.59% (1,203,048B) 0x49DBB14: ecore::EClassImpl::getEReferences() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.59% (1,203,048B) 0x497F2CE: ecore::ecoreFactoryImpl::createEReference_as_eReferences_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.59% (1,203,048B) 0x10A6C8: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.59% (1,203,048B) 0x49DC094: ecore::EClassImpl::getEOperations() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.59% (1,203,048B) 0x498181B: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.59% (1,203,048B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.59% (1,203,048B) 0x4A4696C: ecore::EOperationImpl::getEParameters() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.59% (1,203,048B) 0x497EA93: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.59% (1,203,048B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.37% (1,031,232B) 0x4A33B56: ecore::EObjectImpl::getEContentUnion() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+  ->01.37% (1,031,232B) in 3 places, all below massif's threshold (1.00%)
+    
+--------------------------------------------------------------------------------
+  n        time(B)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 28    832,168,128       97,950,512       86,545,561    11,404,951            0
+ 29    856,628,848      119,283,392      105,489,265    13,794,127            0
+ 30    886,056,048      147,287,808      130,195,241    17,092,567            0
+ 31    925,384,280      165,570,856      146,324,737    19,246,119            0
+ 32    957,890,488      133,064,648      117,647,233    15,417,415            0
+ 33    979,561,304      111,393,832       98,528,897    12,864,935            0
+ 34  1,012,067,512       78,887,624       69,851,393     9,036,231            0
+ 35  1,033,738,328       57,216,808       50,733,057     6,483,751            0
+ 36  1,066,244,536       24,710,600       22,055,553     2,655,047            0
+ 37  1,098,751,096        7,326,136        6,487,289       838,847            0
+ 38  1,120,422,496       27,706,464       24,482,489     3,223,975            0
+ 39  1,153,395,128       58,137,640       51,452,865     6,684,775            0
+ 40  1,175,066,224       78,249,280       69,164,809     9,084,471            0
+ 41  1,196,737,216       98,872,432       87,358,921    11,513,511            0
+ 42  1,218,408,584      117,550,856      103,960,793    13,590,063            0
+ 43  1,250,915,344      148,485,856      131,252,153    17,233,703            0
+ 44  1,272,586,392      169,109,080      149,446,297    19,662,783            0
+88.37% (149,446,297B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->17.33% (29,300,736B) 0x497B6DC: ecore::ecoreFactoryImpl::createEClass_as_eClassifiers_in_EPackage(std::weak_ptr<ecore::EPackage>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->17.33% (29,300,128B) 0x10A5D3: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| | 
+| ->00.00% (608B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->13.45% (22,746,152B) 0x497F274: ecore::ecoreFactoryImpl::createEReference_as_eReferences_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->13.45% (22,746,152B) 0x10A6C8: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->12.54% (21,204,040B) 0x497AB94: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->12.54% (21,204,040B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->10.94% (18,505,344B) 0x498173C: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->10.94% (18,505,344B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->10.24% (17,318,073B) in 30 places, all below massif's threshold (1.00%)
+| 
+->09.12% (15,420,800B) 0x497E9DC: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->09.12% (15,420,800B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->02.90% (4,903,808B) 0x49C960E: Bag<ecore::EObject>::add(std::shared_ptr<ecore::EObject> const&) (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.82% (3,084,160B) 0x49818EF: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.82% (3,084,160B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |   
+| ->01.08% (1,819,648B) in 4 places, all below massif's threshold (1.00%)
+|   
+->02.28% (3,855,280B) 0x4A33B14: ecore::EObjectImpl::getEContentUnion() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.14% (1,927,640B) 0x49DBF8A: ecore::EClassImpl::getEStructuralFeatures() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.14% (1,927,640B) 0x49DBD8F: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |   ->01.14% (1,927,640B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |     ->01.14% (1,927,640B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |       
+| ->01.14% (1,927,600B) 0x4A46A12: ecore::EOperationImpl::getEParameters() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.14% (1,927,600B) 0x497EA93: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |   ->01.14% (1,927,600B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |     
+| ->00.00% (40B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->01.82% (3,084,224B) 0x49DBECC: ecore::EClassImpl::getEStructuralFeatures() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.82% (3,084,224B) 0x49DBD8F: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.82% (3,084,224B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|     ->01.82% (3,084,224B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|       
+->01.60% (2,698,696B) 0x49DBB14: ecore::EClassImpl::getEReferences() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.60% (2,698,696B) 0x497F2CE: ecore::ecoreFactoryImpl::createEReference_as_eReferences_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.60% (2,698,696B) 0x10A6C8: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.60% (2,698,696B) 0x49DBCE4: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.60% (2,698,696B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.60% (2,698,696B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.60% (2,698,640B) 0x49DC094: ecore::EClassImpl::getEOperations() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.60% (2,698,640B) 0x498181B: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.60% (2,698,640B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.60% (2,698,640B) 0x4A4696C: ecore::EOperationImpl::getEParameters() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.60% (2,698,640B) 0x497EA93: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.60% (2,698,640B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.37% (2,313,168B) 0x4A33B56: ecore::EObjectImpl::getEContentUnion() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+  ->01.37% (2,313,168B) in 3 places, all below massif's threshold (1.00%)
+    
+--------------------------------------------------------------------------------
+  n        time(B)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 45  1,315,927,984      138,627,504      122,554,929    16,072,575            0
+ 46  1,359,269,560       95,285,928       84,318,281    10,967,647            0
+ 47  1,380,940,376       73,615,112       65,199,945     8,415,167            0
+88.57% (65,199,945B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->17.03% (12,540,000B) 0x497B6DC: ecore::ecoreFactoryImpl::createEClass_as_eClassifiers_in_EPackage(std::weak_ptr<ecore::EPackage>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->17.03% (12,539,392B) 0x10A5D3: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| | 
+| ->00.00% (608B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->13.22% (9,734,056B) 0x497F274: ecore::ecoreFactoryImpl::createEReference_as_eReferences_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->13.22% (9,734,056B) 0x10A6C8: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->12.33% (9,074,120B) 0x497AB94: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->12.33% (9,074,120B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->10.76% (7,919,232B) 0x498173C: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->10.76% (7,919,232B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->09.52% (7,006,825B) in 29 places, all below massif's threshold (1.00%)
+| 
+->08.96% (6,599,360B) 0x497E9DC: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->08.96% (6,599,360B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->03.67% (2,698,480B) 0x49C960E: Bag<ecore::EObject>::add(std::shared_ptr<ecore::EObject> const&) (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.79% (1,319,936B) 0x49818EF: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.79% (1,319,936B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |   
+| ->01.42% (1,048,576B) 0x497B862: ecore::ecoreFactoryImpl::createEClass_as_eClassifiers_in_EPackage(std::weak_ptr<ecore::EPackage>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.42% (1,048,576B) 0x10A5D3: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| | | 
+| | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | 
+| ->00.45% (329,968B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->02.24% (1,649,920B) 0x4A33B14: ecore::EObjectImpl::getEContentUnion() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.12% (824,960B) 0x49DBF8A: ecore::EClassImpl::getEStructuralFeatures() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.12% (824,960B) 0x49DBD8F: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |   ->01.12% (824,960B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |     ->01.12% (824,960B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |       
+| ->01.12% (824,920B) 0x4A46A12: ecore::EOperationImpl::getEParameters() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.12% (824,920B) 0x497EA93: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |   ->01.12% (824,920B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |     
+| ->00.00% (40B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->01.79% (1,319,872B) 0x49DBECC: ecore::EClassImpl::getEStructuralFeatures() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.79% (1,319,872B) 0x49DBD8F: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.79% (1,319,872B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|     ->01.79% (1,319,872B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|       
+->01.57% (1,154,888B) 0x49DBB14: ecore::EClassImpl::getEReferences() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.57% (1,154,888B) 0x497F2CE: ecore::ecoreFactoryImpl::createEReference_as_eReferences_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.57% (1,154,888B) 0x10A6C8: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.57% (1,154,888B) 0x49DBCE4: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.57% (1,154,888B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.57% (1,154,888B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.57% (1,154,888B) 0x49DC094: ecore::EClassImpl::getEOperations() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.57% (1,154,888B) 0x498181B: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.57% (1,154,888B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.57% (1,154,888B) 0x4A4696C: ecore::EOperationImpl::getEParameters() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.57% (1,154,888B) 0x497EA93: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.57% (1,154,888B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.42% (1,048,576B) 0x497BA57: ecore::ecoreFactoryImpl::createEClass_as_eClassifiers_in_EPackage(std::weak_ptr<ecore::EPackage>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.42% (1,048,576B) 0x10A5D3: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| | 
+| ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->01.34% (989,952B) 0x4A33B56: ecore::EObjectImpl::getEContentUnion() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+  ->01.34% (989,952B) in 3 places, all below massif's threshold (1.00%)
+    
+--------------------------------------------------------------------------------
+  n        time(B)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 48  1,413,446,600       41,108,888       36,522,441     4,586,447            0
+ 49  1,445,952,792        8,602,696        7,845,009       757,687            0
+ 50  1,463,609,512        8,523,304        7,543,393       979,911            0
+ 51  1,481,266,056       25,083,080       22,168,089     2,914,991            0
+ 52  1,498,922,976       41,399,920       36,593,993     4,805,927            0
+ 53  1,516,995,480       58,137,640       51,452,865     6,684,775            0
+88.50% (51,452,865B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->17.13% (9,961,472B) 0x497B6DC: ecore::ecoreFactoryImpl::createEClass_as_eClassifiers_in_EPackage(std::weak_ptr<ecore::EPackage>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->17.13% (9,960,864B) 0x10A5D3: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| | 
+| ->00.00% (608B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->13.30% (7,732,304B) 0x497F274: ecore::ecoreFactoryImpl::createEReference_as_eReferences_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->13.30% (7,732,304B) 0x10A6C8: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->12.40% (7,208,080B) 0x497AB94: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->12.40% (7,208,080B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->10.82% (6,290,688B) 0x498173C: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->10.82% (6,290,688B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->10.50% (6,106,113B) in 30 places, all below massif's threshold (1.00%)
+| 
+->09.02% (5,242,240B) 0x497E9DC: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->09.02% (5,242,240B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->03.61% (2,096,992B) 0x49C960E: Bag<ecore::EObject>::add(std::shared_ptr<ecore::EObject> const&) (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.80% (1,048,448B) 0x49818EF: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.80% (1,048,448B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |   
+| ->01.35% (786,432B) 0x497B862: ecore::ecoreFactoryImpl::createEClass_as_eClassifiers_in_EPackage(std::weak_ptr<ecore::EPackage>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.35% (786,432B) 0x10A5D3: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| | | 
+| | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | 
+| ->00.45% (262,112B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->02.25% (1,310,600B) 0x4A33B14: ecore::EObjectImpl::getEContentUnion() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.13% (655,280B) 0x49DBF8A: ecore::EClassImpl::getEStructuralFeatures() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.13% (655,280B) 0x49DBD8F: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |   ->01.13% (655,280B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |     ->01.13% (655,280B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |       
+| ->01.13% (655,280B) 0x4A46A12: ecore::EOperationImpl::getEParameters() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.13% (655,280B) 0x497EA93: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |   ->01.13% (655,280B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |     
+| ->00.00% (40B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->01.80% (1,048,448B) 0x49DBECC: ecore::EClassImpl::getEStructuralFeatures() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.80% (1,048,448B) 0x49DBD8F: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.80% (1,048,448B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|     ->01.80% (1,048,448B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|       
+->01.58% (917,392B) 0x49DBB14: ecore::EClassImpl::getEReferences() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.58% (917,392B) 0x497F2CE: ecore::ecoreFactoryImpl::createEReference_as_eReferences_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.58% (917,392B) 0x10A6C8: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.58% (917,392B) 0x49DBCE4: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.58% (917,392B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.58% (917,392B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.58% (917,392B) 0x49DC094: ecore::EClassImpl::getEOperations() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.58% (917,392B) 0x498181B: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.58% (917,392B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.58% (917,392B) 0x4A4696C: ecore::EOperationImpl::getEParameters() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.58% (917,392B) 0x497EA93: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.58% (917,392B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.35% (786,360B) 0x4A33B56: ecore::EObjectImpl::getEContentUnion() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+  ->01.35% (786,360B) in 3 places, all below massif's threshold (1.00%)
+    
+--------------------------------------------------------------------------------
+  n        time(B)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 54  1,534,652,256       74,429,008       65,794,513     8,634,495            0
+ 55  1,552,308,792       91,231,944       80,618,281    10,613,663            0
+ 56  1,569,965,368      108,034,712       95,442,041    12,592,671            0
+ 57  1,587,621,928      122,892,456      108,673,225    14,219,231            0
+ 58  1,605,278,776      139,695,624      123,497,265    16,198,359            0
+ 59  1,622,935,512      156,498,584      138,321,145    18,177,439            0
+ 60  1,640,592,032      173,301,328      153,144,713    20,156,615            0
+ 61  1,658,248,640      159,907,200      141,328,177    18,579,023            0
+ 62  1,675,905,160      142,250,680      125,751,377    16,499,303            0
+ 63  1,693,561,800      124,594,040      110,174,337    14,419,703            0
+88.43% (110,174,337B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->17.25% (21,487,328B) 0x497B6DC: ecore::ecoreFactoryImpl::createEClass_as_eClassifiers_in_EPackage(std::weak_ptr<ecore::EPackage>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->17.25% (21,486,720B) 0x10A5D3: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| | 
+| ->00.00% (608B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->13.39% (16,680,480B) 0x497F274: ecore::ecoreFactoryImpl::createEReference_as_eReferences_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->13.39% (16,680,480B) 0x10A6C8: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->12.48% (15,549,600B) 0x497AB94: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->12.48% (15,549,600B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->10.89% (13,570,560B) 0x498173C: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->10.89% (13,570,560B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->10.43% (13,000,289B) in 30 places, all below massif's threshold (1.00%)
+| 
+->09.08% (11,308,800B) 0x497E9DC: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->09.08% (11,308,800B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|   
+->03.11% (3,875,776B) 0x49C960E: Bag<ecore::EObject>::add(std::shared_ptr<ecore::EObject> const&) (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.82% (2,261,760B) 0x49818EF: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.82% (2,261,760B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |   
+| ->01.30% (1,614,016B) in 4 places, all below massif's threshold (1.00%)
+|   
+->02.27% (2,827,240B) 0x4A33B14: ecore::EObjectImpl::getEContentUnion() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.13% (1,413,600B) 0x49DBF8A: ecore::EClassImpl::getEStructuralFeatures() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.13% (1,413,600B) 0x49DBD8F: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |   ->01.13% (1,413,600B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |     ->01.13% (1,413,600B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |       
+| ->01.13% (1,413,600B) 0x4A46A12: ecore::EOperationImpl::getEParameters() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| | ->01.13% (1,413,600B) 0x497EA93: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| |   ->01.13% (1,413,600B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+| |     
+| ->00.00% (40B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->01.82% (2,261,760B) 0x49DBECC: ecore::EClassImpl::getEStructuralFeatures() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.82% (2,261,760B) 0x49DBD8F: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.82% (2,261,760B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|     ->01.82% (2,261,760B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|       
+->01.59% (1,979,040B) 0x49DBB14: ecore::EClassImpl::getEReferences() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.59% (1,979,040B) 0x497F2CE: ecore::ecoreFactoryImpl::createEReference_as_eReferences_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.59% (1,979,040B) 0x10A6C8: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.59% (1,979,040B) 0x49DBCE4: ecore::EClassImpl::getEAttributes() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.59% (1,979,040B) 0x497ABEE: ecore::ecoreFactoryImpl::createEAttribute_as_eAttributes_in_EClass(std::shared_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.59% (1,979,040B) 0x10A643: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.59% (1,979,040B) 0x49DC094: ecore::EClassImpl::getEOperations() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.59% (1,979,040B) 0x498181B: ecore::ecoreFactoryImpl::createEOperation_as_eOperations_in_EClass(std::weak_ptr<ecore::EClass>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.59% (1,979,040B) 0x10A750: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.59% (1,979,040B) 0x4A4696C: ecore::EOperationImpl::getEParameters() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+| ->01.59% (1,979,040B) 0x497EA93: ecore::ecoreFactoryImpl::createEParameter_as_eParameters_in_EOperation(std::weak_ptr<ecore::EOperation>, int) const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+|   ->01.59% (1,979,040B) 0x10A7CD: main (in /home/azee/MDE4CPP_CPP20/application/bin/memoryBenchmarkEcore)
+|     
+->01.36% (1,696,344B) 0x4A33B56: ecore::EObjectImpl::getEContentUnion() const (in /home/azee/MDE4CPP_CPP20/application/bin/ecore.so)
+  ->01.36% (1,696,344B) in 3 places, all below massif's threshold (1.00%)
+    
+--------------------------------------------------------------------------------
+  n        time(B)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+ 64  1,711,218,368      106,937,472       94,597,409    12,340,063            0
+ 65  1,728,874,896       89,280,944       79,020,537    10,260,407            0
+ 66  1,746,531,608       71,624,232       63,443,521     8,180,711            0
+ 67  1,764,188,264       53,967,576       47,866,529     6,101,047            0
+ 68  1,781,844,800       36,311,040       32,289,729     4,021,311            0
+ 69  1,799,501,440       18,654,400       16,712,689     1,941,711            0
+ 70  1,818,078,256           77,584           76,953           631            0
