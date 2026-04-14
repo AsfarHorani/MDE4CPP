@@ -71,7 +71,7 @@ class Subset : virtual public Bag<T>
 		}
 
 		virtual iterator erase(iterator el)
-		{	
+		{
 			return erase(*el);
 		}
 

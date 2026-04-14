@@ -8,7 +8,6 @@ import org.gradle.internal.os.OperatingSystem;
 
 description 'Build task for project: ecore'
 
-
 task runCommandCompileEcore(type:Exec) {
 	workingDir project.projectDir
 	def rootPath = project.rootDir.toPath()
