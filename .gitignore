@@ -45,4 +45,4 @@ src/util/boost/
 *.bak
 *.tmp
 *.log
-*.cursorrules
+ 
