@@ -40,9 +40,8 @@ src/common/parser/antlr4/
 src/common/persistence/xerces/
 src/util/boost/
 !src/util/boost/build.gradle
-/results
+
 # Temporary files
 *.bak
 *.tmp
 *.log
- 

@@ -71,8 +71,7 @@ class Subset : virtual public Bag<T>
 		}
 
 		virtual iterator erase(iterator el)
-		{	//print something
-			std::cout << "Erasing element: " << *el << std::endl;
+		{	
 			return erase(*el);
 		}
 
