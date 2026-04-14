@@ -62,7 +62,7 @@ class Bag
                 return m_bag.end();
             }
 
-            // Standard reserve (Good practice)
+            // Standard reserve (Good practice) 
             m_bag.reserve(m_bag.size() + b.size());
 
 #ifndef NDEBUG
@@ -285,9 +285,7 @@ class Bag
         {
             return m_bag.end();
         }
-		//TODO 
-		//erase method with std::vector of elements
-		//find more use ful 
+
 };
 
 #endif // ABSTRACTDATATYPES_BAG_HPP
